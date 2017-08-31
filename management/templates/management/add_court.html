@@ -1,0 +1,23 @@
+{% extends 'core/base_template.html' %}
+{% load staticfiles %}
+{% block pagetitle %} - Crear polideportivo{% endblock %}
+
+{% block head %}
+    <script type='text/javascript' src="{% static 'management/js/management.js' %}"></script>
+{% endblock %}
+
+{% block primary %}
+<a href="{% url 'management:edit_sports_center' center_id %}">Volver al centro</a>
+<br>
+<br>
+<form action="{% url 'management:add_court' center_id %}" method="post">
+    <fieldset>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <input type="button" value="CANCELAR"
+               onclick="javascript:window.location.replace('{% url 'management:edit_sports_center' center_id %}')">
+        <input type="submit" value="GUARDAR" />
+    </fieldset>
+</form>
+{% endblock %}

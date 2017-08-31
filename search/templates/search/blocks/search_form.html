@@ -1,0 +1,46 @@
+<div class="search-form-container">
+    <div class="section pb0">
+        <div class="row mb0">
+            <form id="search-form" class="search-form col s12" method="post">
+                {% csrf_token %}
+                <div class="row mb10">
+                    <div class="col l6 m6 s12 pr0 pl0 mb10">
+                        <div class="input-field col s4">
+                            {{ form.sport }}
+                            <label>{{ form.sport.label }}</label>
+                            {{ form.sport.errors }}
+                        </div>
+                        <div class="input-field col s4">
+                            {{ form.location }}
+                            <label>{{ form.location.label }}</label>
+                            {{ form.location.errors }}
+                        </div>
+                        <div class="input-field col s4">
+                            {{ form.date }}
+                            <label>{{ form.date.label }}</label>
+                            {{ form.date.errors }}
+                        </div>
+                    </div>
+                    <div class="col l6 m6 s12 mb10 pl0">
+                        <div class="input-field col s4">
+                            {{ form.time }}
+                            <label>{{ form.time.label }}</label>
+                            {{ form.time.errors }}
+                        </div>
+                        <div class="input-field col s4">
+                            {{ form.duration }}
+                            <label>{{ form.duration.label }}</label>
+                            {{ form.duration.errors }}
+                        </div>
+                        <div class="input-field center-align col s4">
+                            <button class="btn waves-effect waves-light blue" type="submit" name="action">
+                                Buscar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="divider"></div>
+</div>

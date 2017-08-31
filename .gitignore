@@ -1,0 +1,9 @@
+*.pyc
+*.pyo
+.idea
+/static/
+media/
+reservarpista/settings.py
+restart.sh
+start.sh
+stop.sh

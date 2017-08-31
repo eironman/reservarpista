@@ -1,0 +1,48 @@
+{% extends 'core/base_template.html' %}
+{% load staticfiles %}
+{% block pagetitle %} - Editar polideportivo{% endblock %}
+
+{% block head %}
+    <script type='text/javascript' src="{% static 'management/js/management.js' %}"></script>
+{% endblock %}
+
+{% block primary %}
+<form action="{% url 'management:edit_sports_center' center_id %}" method="post">
+    <fieldset>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <h4>--------- Pistas ----------</h4>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for court in courts %}
+                    <tr class="{% cycle 'row1' 'row2' %}">
+                        <td>{{ court.name }}</td>
+                        <td>
+                            <a href="{% url 'management:edit_court' court.id %}">Editar</a>
+                        </td>
+                        <td>
+                            <a href="{% url 'management:delete_court' court.id %}">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <a href="{% url 'management:add_court' center_id %}">Añadir pista deportiva</a>
+        <br>
+        <br>
+        <br>
+        <input type="button" value="CANCELAR" onclick="javascript:window.location.replace({% url 'management:management_panel' %})">
+        <input type="submit" value="GUARDAR" />
+    </fieldset>
+</form>
+{% endblock %}

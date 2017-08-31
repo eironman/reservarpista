@@ -1,0 +1,21 @@
+{% extends 'core/base_template.html' %}
+{% load staticfiles %}
+{% block pagetitle %} - Identificación{% endblock %}
+
+{% block head %}
+    <script type='text/javascript' src="{% static 'authentication/js/login.js' %}"></script>
+{% endblock %}
+
+{% block primary %}
+Identifícate
+<br>
+<br>
+<form action="{% url 'authentication:login' %}" method="post">
+    <fieldset>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <input type="submit" value="LOGIN" />
+    </fieldset>
+</form>
+{% endblock %}

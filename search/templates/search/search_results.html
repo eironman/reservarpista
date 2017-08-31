@@ -1,0 +1,52 @@
+{% extends 'core/base_template.html' %}
+{% load staticfiles %}
+
+{% block pagetitle %} - Reserva tu deporte online{% endblock %}
+
+{% block head %}
+    <script type='text/javascript' src="{% static 'search/js/Map.js' %}"></script>
+    <script type='text/javascript' src="{% static 'search/js/Paginator.js' %}"></script>
+    <script type='text/javascript' src="{% static 'search/js/SportsCenter.js' %}"></script>
+    <script type='text/javascript' src="{% static 'search/js/BookingModal.js' %}"></script>
+    <script type='text/javascript' src="{% static 'search/js/search.js' %}"></script>
+
+    <!-- Google captcha -->
+    <script src="https://www.google.com/recaptcha/api.js?hl=es" async defer></script>
+    
+    <!-- Google maps -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa4i1mAjRQclf1VLyPWxEMD5XCItn0WLk&callback=Map.init"
+        type="text/javascript"></script>
+{% endblock %}
+
+{% block primary %}
+
+    {% include 'search/blocks/search_form.html' %}
+
+    <div id="sports-center-display" class="row mb0">
+        <div class="col s12 m6 l7 xl8 pl0 pb20">
+            <div id="sports_centers_cards" class="section row">
+                {% for sports_center in sports_centers %}
+                    {% include 'search/blocks/sports_center_card.html' with sports_center=sports_center %}
+                {% endfor %}
+            </div>
+            <div id="sports_centers_paginator">
+                {% include 'search/blocks/paginator.html' with list=sports_centers %}
+            </div>
+        </div>
+        <div id="map-column" class="col s12 m6 l5 xl4 pl0 pr0">
+            <div id="map-container">
+                <div id="map" data-locations="{{ sports_centers_locations }}"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'search/blocks/search_footer.html' %}
+{% endblock %}
+
+{% block bottom %}
+    {% include 'search/blocks/booking_modal.html' %}
+{% endblock %}

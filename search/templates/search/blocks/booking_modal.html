@@ -1,0 +1,74 @@
+<div id="booking-modal" class="modal">
+    <div class="modal-content booking-form-content hide">
+        <h4 id="modal-sports-center-name">Duet Sport</h4>
+        <ul>
+            <li>
+                <strong>Deporte:</strong>&nbsp;
+                <span id="booking-modal-sport"></span>
+            </li>
+            <li>
+                <strong>Ubicación:</strong>&nbsp;
+                <span id="booking-modal-location"></span>
+            </li>
+            <li>
+                <strong>Día:</strong>&nbsp;
+                <span id="booking-modal-date"></span>
+            </li>
+            <li>
+                <strong>Hora:</strong>&nbsp;
+                <span id="booking-modal-time"></span>
+            </li>
+            <li>
+                <strong>Duración:</strong>&nbsp;
+                <span id="booking-modal-duration"></span>
+            </li>
+        </ul>
+        <div class="row mb10">
+            <div class="col s12 pr0 pl0 mb10">
+                <div class="input-field col m6 s12 pl0">
+                    <input type="text" id="user-name">
+                    <label for="user-name">Nombre</label>
+                    <ul class="errorlist">
+                        <li class="mandatory-field hide">Todos los campos son obligatorios.</li>
+                    </ul>
+                </div>
+                <div class="input-field col m6 s12 pl0">
+                    <input type="text" id="contact-method">
+                    <label for="contact-method">Un teléfono o correo de contacto</label>
+                    <ul class="errorlist">
+                        <li class="mandatory-field hide">Todos los campos son obligatorios.</li>
+                        <li class="request-error hide">¡Vaya! Ocurrió un error al hacer la solicitud.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="g-recaptcha hide"
+            data-sitekey="6LfO3y4UAAAAAJf-l2BX2TK2zySWafV4Fp-PBokO"
+            data-callback="GCaptchaCallback"
+            data-size="invisible">
+        </div>
+    </div>
+    <div class="modal-content loading-content valign-wrapper">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-content success-content hide">
+        <p>¡Muchas gracias! Tu mensaje fue enviado con éxito.</p>
+        <p>En la mayor brevedad posible nos pondremos en contacto contigo.</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn red left">CERRAR</a>
+        <a href="#!" class="waves-effect waves-green btn blue" onclick="BookingModal.isFormCompleted()">ENVIAR</a>
+    </div>
+</div>

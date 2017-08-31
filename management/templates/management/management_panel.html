@@ -1,0 +1,40 @@
+{% extends 'core/base_template.html' %}
+{% load staticfiles %}
+{% block pagetitle %} - Bienvenido a la zona de administración{% endblock %}
+
+{% block head %}
+    <script type='text/javascript' src="{% static 'management/js/management.js' %}"></script>
+{% endblock %}
+
+{% block primary %}
+Zona de administración
+<br>
+<br>
+<h4>--------- Centros deportivos ----------</h4>
+<br>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sports_center in sports_centers %}
+            <tr class="{% cycle 'row1' 'row2' %}">
+                <td>{{ sports_center.name }}</td>
+                <td>
+                    <a href="{% url 'management:edit_sports_center' sports_center.id %}">Editar</a>
+                </td>
+                <td>
+                    <a href="{% url 'management:delete_sports_center' sports_center.id %}">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<a href="{% url 'management:add_sports_center' %}">Añadir centro deportivo</a>
+{% endblock %}

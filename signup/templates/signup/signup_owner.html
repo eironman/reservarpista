@@ -1,0 +1,21 @@
+{% extends 'core/base_template.html' %}
+{% load staticfiles %}
+{% block pagetitle %} - Registro{% endblock %}
+
+{% block head %}
+    <script type='text/javascript' src="{% static 'signup/js/signup.js' %}"></script>
+{% endblock %}
+
+{% block primary %}
+Regístrate
+<br>
+<br>
+<form action="{% url 'signup:signup_page_owner' %}" method="post">
+    <fieldset>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <input type="submit" value="SIGNUP" />
+    </fieldset>
+</form>
+{% endblock %}

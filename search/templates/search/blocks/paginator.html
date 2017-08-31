@@ -1,0 +1,27 @@
+<ul class="pagination center-align mb50">
+    {% if list.has_previous %}
+        <li class="active waves-effect">
+            <a id="prev-page" href="javascript:void(0)" data-page="{{ list.previous_page_number }}">
+                <i class="material-icons">chevron_left</i>
+            </a>
+        </li>
+    {% else %}
+        <li class="disabled">
+            <a href="javascript:void(0)"><i class="material-icons">chevron_left</i></a>
+        </li>
+    {% endif %}
+
+    <li><a href="#!">Página {{ list.number }} de {{ list.paginator.num_pages }}</a></li>
+
+    {% if list.has_next %}
+        <li class="active waves-effect">
+            <a id="next-page" href="javascript:void(0)" data-page="{{ list.next_page_number }}">
+                <i class="material-icons">chevron_right</i>
+            </a>
+        </li>
+    {% else %}
+        <li class="disabled">
+            <a href="javascript:void(0)"><i class="material-icons">chevron_right</i></a>
+        </li>
+    {% endif %}
+</ul>
