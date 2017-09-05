@@ -1,0 +1,16 @@
+Solicitud de reserva
+
+Saludos {{sports_center_name}},
+
+A través de http://reservarpista.es una persona se interesó por vuestro centro deportivo y está solicitando una reserva en el mismo con los siguientes datos:
+
+Nombre: {{name}}
+Deporte: {{sport}}
+Día: {{date}}
+Hora: {{time}}
+Duración: {{duration}}
+Correo de contacto: {{email}}
+Teléfono de contacto: {{phone}}
+
+http://reservarpista.es ha nacido con la idea de dar a conocer a un mayor número de gente todos los centros deportivos disponibles,
+en especial aquellos que por su ubicación o tamaño pasan desapercibidos.

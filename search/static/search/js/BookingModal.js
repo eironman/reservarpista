@@ -25,18 +25,21 @@ var BookingModal =
     // Hides all error messages
     hideErrors: function()
     {
-        $('#booking-modal .errorlist .mandatory-field').addClass('hide');
+        $('#booking-modal .errorlist .mandatory-name-field').addClass('hide');
+        $('#booking-modal .errorlist .mandatory-contact-field').addClass('hide');
         $('#booking-modal .errorlist .request-error').addClass('hide');
     },
 
     // Checks if the form is ok, then executes the captcha
     isFormCompleted: function()
     {
-        console.log('uep');
-        if ($("#user-name").val() !== "" && $("#contact-method").val() !== "") {
-            grecaptcha.execute(); // The callback is GCaptchaCallback, which executes BookingModal.sendBookingRequest()
+        if ($("#user-name").val() == "") {
+            this.showMandatoryNameError();
+        } else if ($("#contact-phone").val() == "" && $("#contact-email").val() == "") {
+            this.showMandatoryContactError();
         } else {
-            this.showMandatoryFieldError();
+            // grecaptcha.execute(); // The callback is GCaptchaCallback (search.js), which executes BookingModal.sendBookingRequest()
+            this.sendBookingRequest();
         }
     },
 
@@ -46,7 +49,7 @@ var BookingModal =
         var self = this;
         this.showLoading();
         this.hideErrors();
-
+        console.log('request')
         // Set the security token
         var csrftoken = Helper.getCookie('csrftoken')
         $.ajaxSetup({
@@ -65,10 +68,12 @@ var BookingModal =
                 sportsCenterId: self.sportsCenterId,
                 location: self.location,
                 sport: self.sport,
+                date: self.date,
                 time: self.time,
                 duration: self.duration,
                 userName: $("#user-name").val(),
-                contactMethod: $("#contact-method").val()
+                phone: $("#contact-phone").val(),
+                email: $("#contact-email").val()
             }
         })
         .done(function(response) {
@@ -104,11 +109,20 @@ var BookingModal =
         $('#booking-modal .loading-content').removeClass('hide');
     },
 
-    // Message error when the user didn't fill the response method
-    showMandatoryFieldError: function()
+    // Message error when the user didn't fill the name
+    showMandatoryNameError: function()
     {
         $('#booking-modal .errorlist .request-error').addClass('hide');
-        $('#booking-modal .errorlist .mandatory-field').removeClass('hide');
+        $('#booking-modal .errorlist .mandatory-contact-field').addClass('hide');
+        $('#booking-modal .errorlist .mandatory-name-field').removeClass('hide');
+    },
+
+    // Message error when the user didn't fill the contact data
+    showMandatoryContactError: function()
+    {
+        $('#booking-modal .errorlist .request-error').addClass('hide');
+        $('#booking-modal .errorlist .mandatory-name-field').addClass('hide');
+        $('#booking-modal .errorlist .mandatory-contact-field').removeClass('hide');
     },
 
     // Message error when the request went wrong

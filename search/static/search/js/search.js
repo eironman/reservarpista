@@ -7,6 +7,7 @@
     });
 })(jQuery);
 
+// Callback for google captcha
 function GCaptchaCallback()
 {
     BookingModal.sendBookingRequest();

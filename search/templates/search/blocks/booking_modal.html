@@ -25,20 +25,24 @@
         </ul>
         <div class="row mb10">
             <div class="col s12 pr0 pl0 mb10">
-                <div class="input-field col m6 s12 pl0">
+                <div class="input-field col m4 s12 pl0">
                     <input type="text" id="user-name">
                     <label for="user-name">Nombre</label>
                     <ul class="errorlist">
-                        <li class="mandatory-field hide">Todos los campos son obligatorios.</li>
-                    </ul>
-                </div>
-                <div class="input-field col m6 s12 pl0">
-                    <input type="text" id="contact-method">
-                    <label for="contact-method">Un teléfono o correo de contacto</label>
-                    <ul class="errorlist">
-                        <li class="mandatory-field hide">Todos los campos son obligatorios.</li>
+                        <li class="mandatory-name-field hide">¿Cómo te llamas?</li>
                         <li class="request-error hide">¡Vaya! Ocurrió un error al hacer la solicitud.</li>
                     </ul>
+                </div>
+                <div class="input-field col m4 s12 pl0">
+                    <input type="text" id="contact-phone">
+                    <label for="contact-phone">Teléfono de contacto</label>
+                    <ul class="errorlist">
+                        <li class="mandatory-contact-field hide">¡Hey! Que hemos de poder contactar contigo.</li>
+                    </ul>
+                </div>
+                <div class="input-field col m4 s12 pl0">
+                    <input type="text" id="contact-email">
+                    <label for="contact-email">Correo de contacto</label>
                 </div>
             </div>
         </div>
@@ -64,7 +68,7 @@
         </div>
     </div>
     <div class="modal-content success-content hide">
-        <p>¡Muchas gracias! Tu mensaje fue enviado con éxito.</p>
+        <p>¡Muchas gracias! Tu solicitud fue enviada con éxito.</p>
         <p>En la mayor brevedad posible nos pondremos en contacto contigo.</p>
     </div>
     <div class="modal-footer">

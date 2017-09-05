@@ -1,9 +1,10 @@
 import json
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
+from search.mailer import SearchMailer
 from search.forms import SearchSportForm
 from core.models import SportsCenter
 
@@ -116,10 +117,20 @@ def go_to_page(request, sport_slug, city_slug, page):
 
 
 def send_booking_request(request, sport_slug, city_slug):
-    print(request.POST)
-    data = {
-        'result': 'ko'
-    }
+    """Sends the booking request email to the sports center, the user and me"""
+
+    mail = SearchMailer(request)
+    if mail.send_request():
+
+        data = {
+            'result': 'ok'
+        }
+
+    else:
+
+        data = {
+            'result': 'ko'
+        }
 
     return JsonResponse(data)
 
