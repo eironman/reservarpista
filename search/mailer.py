@@ -4,13 +4,9 @@ from django.template.loader import render_to_string
 from smtplib import SMTPException
 from core.models import SportsCenter
 
-"""<QueryDict: {'sport': ['Pádel'], 'duration': ['60 minutos'], 'phone': ['9393939'], 'email': ['ashleyriot@hotmail.com'], 
-'userName': ['Aaron'], 'location': ['Palma'], 'sportsCenterId': ['74'], 'time': ['Cualquiera']}>
-"""
-
 
 class SearchMailer:
-    """Sends the email for the booking request"""
+    """Sends the emails for the booking request"""
 
     sports_center = None
     location = None
@@ -67,8 +63,7 @@ class SearchMailer:
             emails_sent = False
 
         # Email to reservar pista
-        # self.email_to = settings.DEFAULT_FROM_EMAIL
-        self.email_to = 'aaron.amengual@gmail.com'
+        self.email_to = settings.DEFAULT_FROM_EMAIL
         if not self.__send_email():
             emails_sent = False
 

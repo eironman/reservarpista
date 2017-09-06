@@ -4,8 +4,9 @@ var Map =
     markersList: [],
     markerHighlighted: null,
     sportsCenterslocations: [],
-    blueMarker: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-    redMarker: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+    // blueMarkerIcon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+    blueMarkerIcon: '/static/search/img/blu-circle.png',
+    redMarkerIcon: '/static/search/img/red-circle.png',
 
     // Shows in the results the sports center selected and shows the booking form
     askForBooking: function(sportsCenterId)
@@ -21,7 +22,7 @@ var Map =
         {
             for (var i=0; i<this.markersList.length; i++) {
                 if (this.markersList[i].sportsCenterId == id) {
-                    this.markersList[i].setIcon(this.redMarker);
+                    this.markersList[i].setIcon(this.redMarkerIcon);
                     this.markerHighlighted = this.markersList[i];
                     break;
                 }
@@ -58,7 +59,7 @@ var Map =
             var marker = new google.maps.Marker({
                 position: markerPosition,
                 map: self.map,
-                icon: self.blueMarker,
+                icon: self.blueMarkerIcon,
                 html: self.infoWindowContent,
                 sportsCenterId: this.sportsCenterslocations[i]['id'],
             });
@@ -81,7 +82,7 @@ var Map =
     unhighlightActiveMarker: function()
     {
         if (this.markerHighlighted !== null) {
-            this.markerHighlighted.setIcon(this.blueMarker);
+            this.markerHighlighted.setIcon(this.blueMarkerIcon);
             this.markerHighlighted = null;
         }
     },

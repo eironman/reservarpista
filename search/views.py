@@ -8,11 +8,11 @@ from search.mailer import SearchMailer
 from search.forms import SearchSportForm
 from core.models import SportsCenter
 
-sports_centers_per_page = 3
-
 
 def get_sports_centers_page(sports_centers_list, page_num):
     """Returns the list of sports centers in a page"""
+
+    sports_centers_per_page = 3
     paginator = Paginator(sports_centers_list, sports_centers_per_page)
     try:
         sports_centers = paginator.page(page_num)
@@ -54,7 +54,6 @@ def index(request, sport_slug, city_slug):
 
     context = {
         'form': form,
-        'form_values': form_values,
         'sports_centers': sports_centers,
         'sports_centers_locations': json.dumps(sports_centers_locations)
     }
@@ -117,7 +116,7 @@ def go_to_page(request, sport_slug, city_slug, page):
 
 
 def send_booking_request(request, sport_slug, city_slug):
-    """Sends the booking request email to the sports center, the user and me"""
+    """Sends the booking request email to the sports center, the user and reservar pista"""
 
     mail = SearchMailer(request)
     if mail.send_request():

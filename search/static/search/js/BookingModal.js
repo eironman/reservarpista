@@ -38,8 +38,8 @@ var BookingModal =
         } else if ($("#contact-phone").val() == "" && $("#contact-email").val() == "") {
             this.showMandatoryContactError();
         } else {
-            // grecaptcha.execute(); // The callback is GCaptchaCallback (search.js), which executes BookingModal.sendBookingRequest()
-            this.sendBookingRequest();
+            grecaptcha.execute(); // The callback is GCaptchaCallback (search.js), which executes BookingModal.sendBookingRequest()
+            // this.sendBookingRequest();
         }
     },
 

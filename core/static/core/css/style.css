@@ -15,6 +15,10 @@ main {
     z-index: 9;
     background-color: #fff;
 }
+.material-icons.red {
+    color: #f44336;
+    background-color: transparent !important;
+}
 /* form error messages */
 .errorlist {
     margin: 0px;
@@ -43,6 +47,17 @@ main {
     #sports-center-display {
         margin-top: 160px;
     }
+}
+.no-results {
+    height: 300px;
+    padding: 0 20px;
+}
+.no-results p{
+    margin: 0 auto;
+    text-align: center;
+}
+.no-results p i{
+    margin-right: 10px;
 }
 #map-column {
     position: relative;
@@ -80,7 +95,20 @@ main {
     height: 150px;
 }
 .search_results_footer {
-    color: #000;
+    height: 50px;
+    padding: 0;
+    color: #ccc;
+}
+.search_results_footer a {
+    color: #ccc;
+    text-decoration: underline;
+}
+.search_results_footer .row{
+    margin-bottom: 0px;
+}
+.search_results_footer p{
+    margin: 0px;
+    padding-top: 13px;
 }
 .mini-footer {
     text-align: center;
