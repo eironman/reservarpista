@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from smtplib import SMTPException
@@ -38,10 +39,11 @@ class SearchMailer:
         self.duration = request.POST['duration']
 
     def send_request(self):
-        """Sends the booking request to the sports center"""
+        """Builds the emails for the sports center, the user and reservarpista"""
 
         email_data = {
             'sports_center_name': self.sports_center.name,
+            'sports_center_phone': self.sports_center.phone,
             'name': self.user_name,
             'sport': self.sport,
             'date': self.date,
@@ -50,24 +52,30 @@ class SearchMailer:
             'email': self.user_email,
             'phone': self.user_phone,
         }
-        self.msg_plain = render_to_string('email/booking_request.txt', email_data)
-        self.msg_html = render_to_string('email/booking_request.html', email_data)
+        self.msg_plain = render_to_string('email/booking_request_center.txt', email_data)
+        self.msg_html = render_to_string('email/booking_request_center.html', email_data)
         self.subject = 'Solicitud de Reserva'
 
         emails_sent = True
 
         # Email to sports center
-        self.email_to = self.sports_center.email
+        if settings.DEBUG:
+            self.email_to = 'aaron_amengual@hotmail.com'
+        else:
+            self.email_to = self.sports_center.email
         if not self.__send_email():
             emails_sent = False
 
-        # Email to me
-        self.email_to = 'info@reservarpista.es'
+        # Email to reservar pista
+        # self.email_to = settings.DEFAULT_FROM_EMAIL
+        self.email_to = 'aaron.amengual@gmail.com'
         if not self.__send_email():
             emails_sent = False
 
         # Email to user
         if not self.user_email == '':
+            self.msg_plain = render_to_string('email/booking_request_user.txt', email_data)
+            self.msg_html = render_to_string('email/booking_request_user.html', email_data)
             self.email_to = self.user_email
             if not self.__send_email():
                 emails_sent = False
@@ -75,10 +83,12 @@ class SearchMailer:
         return emails_sent
 
     def __send_email(self):
+        """Sends the actual email"""
+
         email = EmailMultiAlternatives(
-            '[Reservar Pista] ' + self.subject,
+            self.subject,
             self.msg_plain,
-            'info@reservarpista.es',
+            'Reservar Pista <' + settings.DEFAULT_FROM_EMAIL + '>',
             [self.email_to]
         )
 
@@ -89,12 +99,15 @@ class SearchMailer:
             email.attach_alternative(self.msg_html, 'text/html')
 
         try:
-            email.send()
+            emails_sent = email.send()
         except SMTPException as e:
-            # TODO Register exceptions
+            # TODO Log exceptions
             return False
 
-        return True
+        if emails_sent == 1:
+            return True
+        else:
+            return False
 
 
 

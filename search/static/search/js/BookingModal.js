@@ -49,7 +49,7 @@ var BookingModal =
         var self = this;
         this.showLoading();
         this.hideErrors();
-        console.log('request')
+
         // Set the security token
         var csrftoken = Helper.getCookie('csrftoken')
         $.ajaxSetup({
