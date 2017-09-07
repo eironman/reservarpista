@@ -24,8 +24,74 @@
                 {{ sports_center.name }}
                 <i class="material-icons right close-reveal">close</i>
             </span>
-            <h5>Petición de reserva</h5>
-            <p>¡Hey! Primero debes realizar una búsqueda.</p>
+            <p>{{ sports_center.address }}</p>
+            <ul class="amenities">
+                <li>
+                    <strong>Web</strong>
+                    {% if sports_center.website %}
+                        <a href="{{ sports_center.website }}" target="_blank" >Ver página</a>
+                    {% else %}
+                        <i class="material-icons tiny red">clear</i>
+                    {% endif %}
+                </li>
+                <li>
+                    <strong>Municipal</strong>
+                    {% if sports_center.municipal %}
+                        <i class="material-icons tiny green">check</i>
+                    {% else %}
+                        <i class="material-icons tiny red">clear</i>
+                    {% endif %}
+                </li>
+                <li>
+                    <strong>Vestuarios</strong>
+                    {% if sports_center.locker_room %}
+                        <i class="material-icons tiny green">check</i>
+                    {% else %}
+                        <i class="material-icons tiny red">clear</i>
+                    {% endif %}
+                </li>
+                <li>
+                    <strong>Taquillas</strong>
+                    {% if sports_center.lockers %}
+                        <i class="material-icons tiny green">check</i>
+                    {% else %}
+                        <i class="material-icons tiny red">clear</i>
+                    {% endif %}
+                </li>
+                <li>
+                    <strong>Equipamiento</strong>
+                    {% if sports_center.equipment_rental %}
+                        <i class="material-icons tiny green">check</i>
+                    {% else %}
+                        <i class="material-icons tiny red">clear</i>
+                    {% endif %}
+                </li>
+                <li>
+                    <strong>Duchas</strong>
+                    {% if sports_center.shower %}
+                        <i class="material-icons tiny green">check</i>
+                    {% else %}
+                        <i class="material-icons tiny red">clear</i>
+                    {% endif %}
+                </li>
+                <li>
+                    <strong>Bar</strong>
+                    {% if sports_center.bar %}
+                        <i class="material-icons tiny green">check</i>
+                    {% else %}
+                        <i class="material-icons tiny red">clear</i>
+                    {% endif %}
+                </li>
+                <li>
+                    <strong>Parking</strong>
+                    {% if sports_center.parking %}
+                        <i class="material-icons tiny green">check</i>
+                    {% else %}
+                        <i class="material-icons tiny red">clear</i>
+                    {% endif %}
+                </li>
+            </ul>
+            <p>{{ sports_center.description|linebreaksbr }}</p>
         </div>
     </div>
 </div>

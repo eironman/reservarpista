@@ -33,17 +33,15 @@
         </a>
         <div id="sports-centers-column" class="col s12 m6 l7 xl8 pl0 pb20">
             <div id="sports_centers_cards" class="section row">
-                {% if sports_centers %}
-                    {% for sports_center in sports_centers %}
-                        {% include 'search/blocks/sports_center_card.html' with sports_center=sports_center %}
-                    {% endfor %}
-                {% else %}
+                {% for sports_center in sports_centers %}
+                    {% include 'search/blocks/sports_center_card.html' with sports_center=sports_center %}
+                {% empty %}
                     <div class="no-results valign-wrapper">
                         <p class="valign-wrapper">
                             <i class="medium material-icons red">report</i>¡Vaya! No tenemos resultados para esta búsqueda.
                         </p>
                     </div>
-                {% endif %}
+                {% endfor %}
             </div>
             <div id="sports_centers_paginator">
                 {% if sports_centers %}

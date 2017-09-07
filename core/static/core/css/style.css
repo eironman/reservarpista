@@ -15,9 +15,17 @@ main {
     z-index: 9;
     background-color: #fff;
 }
+.material-icons {
+    background-color: transparent !important;
+}
 .material-icons.red {
     color: #f44336;
-    background-color: transparent !important;
+}
+.material-icons.blue {
+    color: #2196F3;
+}
+.material-icons.green {
+    color: #4caf50;
 }
 /* form error messages */
 .errorlist {
@@ -47,6 +55,10 @@ main {
     #sports-center-display {
         margin-top: 160px;
     }
+}
+.card-reveal .amenities strong {
+    display: inline-block;
+    width: 95px;
 }
 .no-results {
     height: 300px;
