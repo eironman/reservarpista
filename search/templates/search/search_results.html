@@ -8,6 +8,7 @@
     <script type='text/javascript' src="{% static 'search/js/Paginator.js' %}"></script>
     <script type='text/javascript' src="{% static 'search/js/SportsCenter.js' %}"></script>
     <script type='text/javascript' src="{% static 'search/js/BookingModal.js' %}"></script>
+    <script type='text/javascript' src="{% static 'search/js/SearchResults.js' %}"></script>
     <script type='text/javascript' src="{% static 'search/js/search.js' %}"></script>
 
     <!-- Google captcha -->
@@ -24,7 +25,13 @@
     {% include 'search/blocks/search_form.html' %}
 
     <div id="sports-center-display" class="row mb0">
-        <div class="col s12 m6 l7 xl8 pl0 pb20">
+        <a id="show-result-centers" class="hide-on-med-and-up hide btn-floating btn-medium waves-effect waves-light blue">
+            <i class="material-icons">list</i>
+        </a>
+        <a id="show-result-map" class="hide-on-med-and-up btn-floating btn-medium waves-effect waves-light blue">
+            <i class="material-icons">map</i>
+        </a>
+        <div id="sports-centers-column" class="col s12 m6 l7 xl8 pl0 pb20">
             <div id="sports_centers_cards" class="section row">
                 {% if sports_centers %}
                     {% for sports_center in sports_centers %}

@@ -8,10 +8,16 @@ var Map =
     blueMarkerIcon: '/static/search/img/blu-circle.png',
     redMarkerIcon: '/static/search/img/red-circle.png',
 
-    // Shows in the results the sports center selected and shows the booking form
-    askForBooking: function(sportsCenterId)
+    // Shows in the results the sports center selected
+    displayCenter: function(sportsCenterId)
     {
         SportsCenter.find(sportsCenterId);
+    },
+
+    // Hides the map (for mobile)
+    hideMap: function()
+    {
+        $("#map-column").css("visibility", "hidden");
     },
 
     // Highlights the marker of a sports center
@@ -50,7 +56,7 @@ var Map =
                 '<h6>' + self.sportsCenterslocations[i]['name'] + '</h6>' +
                 '<p>' + self.sportsCenterslocations[i]['phone'] + '</p>' +
                 '<p>' +
-                '<a href="#" onclick="Map.askForBooking(' + self.sportsCenterslocations[i]['id'] + '); return false;">' +
+                '<a href="#" onclick="Map.displayCenter(' + self.sportsCenterslocations[i]['id'] + '); return false;">' +
                 'Ver Ficha' +
                 '</a>' +
                 '</p>';
@@ -76,6 +82,12 @@ var Map =
 
         // Sets map boundaries to fit all markers
         self.map.fitBounds(markersBounds);
+    },
+
+    // Shows the map (for mobile)
+    showMap: function()
+    {
+        $("#map-column").css("visibility", "visible");
     },
 
     // Stops highlighting the active marker at that moment
@@ -109,6 +121,9 @@ var Map =
         // Init map
         this.map = new google.maps.Map(document.getElementById('map'), {
           scrollwheel: false,
+          mapTypeControlOptions: {
+              position: google.maps.ControlPosition.TOP_CENTER
+          },
         });
 
         this.placeMarkers();

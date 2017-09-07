@@ -59,6 +59,15 @@ main {
 .no-results p i{
     margin-right: 10px;
 }
+#show-result-map,
+#show-result-centers
+{
+    cursor: pointer;
+    position: fixed;
+    z-index: 4;
+    top: 220px;
+    left: 10px;
+}
 #map-column {
     position: relative;
 }
@@ -70,6 +79,11 @@ main {
 #map {
     width: 100%;
     height: 100%;
+}
+@media (max-width: 600px) {
+    #map-column {
+        visibility: hidden;
+    }
 }
 .pagination li.active {
     background-color: #2196F3;

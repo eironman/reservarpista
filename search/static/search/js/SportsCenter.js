@@ -2,12 +2,12 @@ var SportsCenter =
 {
     center: null,
 
-    // Performs animation to show the sports center selected
+    // Performs animation to show the sports center selected in the map
     animateSelected: function()
     {
         this.scrollTo();
         this.highlight();
-        this.showForm();
+        this.showInfo();
     },
 
     // Checks if there is a center selected
@@ -37,23 +37,19 @@ var SportsCenter =
                 if (response['result'] == 'ok') {
                     $('#sports_centers_cards').prepend(response.html_sport_center);
                     self.center = $('#center-' + sportsCenterId);
+                    SearchResults.showSportsCentersList();
                     self.animateSelected();
                 } else {
                     alert('Ha ocurrido un error al obtener el centro deportivo');
                 }
             });
         } else {
+            SearchResults.showSportsCentersList();
             this.animateSelected();
         }
     },
 
-    // Hides booking forms
-    hideBookingForms: function()
-    {
-        $('.close-reveal').click();
-    },
-
-    // Highlights the sports center
+    // Highlights the sports center selected in the map
     highlight: function()
     {
         var self = this;
@@ -65,7 +61,14 @@ var SportsCenter =
         }
     },
 
-    // Scrolls to the sports center
+    // Hides the centers list (for mobile)
+    hideList: function()
+    {
+        $("#sports-centers-column").css("visibility", "hidden");
+    },
+
+
+    // Scrolls to the sports center selected in the map
     scrollTo: function()
     {
         var self = this;
@@ -76,12 +79,18 @@ var SportsCenter =
         }
     },
 
-    // Shows booking form of the center
-    showForm: function()
+    // Shows the info card of the center selected in the map
+    showInfo: function()
     {
         if (!this.centerIsNull()) {
             $(this.center).find('.activator').click();
         }
+    },
+
+    // Shows the centers list (for mobile)
+    showList: function()
+    {
+        $("#sports-centers-column").css("visibility", "visible");
     },
 
     init: function()

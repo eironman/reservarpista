@@ -4,6 +4,7 @@
         Paginator.init();
         SportsCenter.init();
         BookingModal.init();
+        SearchResults.init();
     });
 })(jQuery);
 
