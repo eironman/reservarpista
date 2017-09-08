@@ -24,13 +24,13 @@ def get_sports_centers_page(sports_centers_list, page_num):
     return sports_centers
 
 
-def index(request, sport_slug, city_slug):
+def index(request, sport_slug, location_slug):
     """Search results"""
 
     # Set values in the search form
     form_values = request.GET.copy()
     form_values['sport'] = sport_slug
-    form_values['location'] = city_slug
+    form_values['location'] = location_slug
     form = SearchSportForm(form_values)
 
     # Get the centers in the first page
@@ -61,11 +61,13 @@ def index(request, sport_slug, city_slug):
     return render(request, 'search/search_results.html', context)
 
 
-def get_sports_center(request, sport_slug, city_slug, id):
+def get_sports_center(request, sport_slug, location_slug, id):
     """Returns a sports center"""
     try:
         sports_center = SportsCenter.objects.get(id=id, active=True)
-        html_sport_center = render_to_string('search/blocks/sports_center_card.html', {'sports_center': sports_center})
+        html_sport_center = render_to_string(
+            'search/blocks/sports_center_card.html',
+            {'sports_center': sports_center, 'images': sports_center.sportscentermedia_set.all()})
 
         data = {
             'result': 'ok',
@@ -80,13 +82,13 @@ def get_sports_center(request, sport_slug, city_slug, id):
     return JsonResponse(data)
 
 
-def go_to_page(request, sport_slug, city_slug, page):
+def go_to_page(request, sport_slug, location_slug, page):
     """Renders a page of sports centers"""
 
     # Set values in the search form
     form_values = request.GET.copy()
     form_values['sport'] = sport_slug
-    form_values['location'] = city_slug
+    form_values['location'] = location_slug
     form = SearchSportForm(form_values)
 
     if form.is_valid():
@@ -100,7 +102,10 @@ def go_to_page(request, sport_slug, city_slug, page):
         # Render the sports centers
         html_list = ''
         for sports_center in sports_centers:
-            html_list += render_to_string('search/blocks/sports_center_card.html', {'sports_center': sports_center})
+            html_list += render_to_string(
+                'search/blocks/sports_center_card.html',
+                {'sports_center': sports_center, 'images': sports_center.sportscentermedia_set.all()}
+            )
 
         data = {
             'result': 'ok',
@@ -115,7 +120,7 @@ def go_to_page(request, sport_slug, city_slug, page):
     return JsonResponse(data)
 
 
-def send_booking_request(request, sport_slug, city_slug):
+def send_booking_request(request, sport_slug, location_slug):
     """Sends the booking request email to the sports center, the user and reservar pista"""
 
     mail = SearchMailer(request)

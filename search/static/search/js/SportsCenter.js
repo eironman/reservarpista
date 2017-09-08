@@ -37,6 +37,7 @@ var SportsCenter =
                 if (response['result'] == 'ok') {
                     $('#sports_centers_cards').prepend(response.html_sport_center);
                     self.center = $('#center-' + sportsCenterId);
+                    self.initializeCarousel();
                     SearchResults.showSportsCentersList();
                     self.animateSelected();
                 } else {
@@ -44,6 +45,7 @@ var SportsCenter =
                 }
             });
         } else {
+            self.initializeCarousel();
             SearchResults.showSportsCentersList();
             this.animateSelected();
         }
@@ -67,6 +69,14 @@ var SportsCenter =
         $("#sports-centers-column").css("visibility", "hidden");
     },
 
+    // Initializes the image carousel
+    initializeCarousel: function()
+    {
+        $('.carousel.carousel-slider').carousel({
+            fullWidth: true,
+            indicators: true
+        });
+    },
 
     // Scrolls to the sports center selected in the map
     scrollTo: function()
@@ -95,6 +105,8 @@ var SportsCenter =
 
     init: function()
     {
+        this.initializeCarousel();
+
         // Hover events
         $('#sports_centers_cards').on('mouseover', '.card', function() {
             Map.highlightMarker($(this).data('id'));

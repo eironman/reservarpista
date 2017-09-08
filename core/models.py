@@ -1,7 +1,45 @@
+import os
+from PIL import Image
 from datetime import date, datetime, time, timedelta
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+
+
+def get_thumbnail_path(original_image_full_path, suffix):
+    """Returns the path to a thumbnail"""
+
+    original_image_path = os.path.split(original_image_full_path)[0] + '/'
+    original_image_full_name = os.path.split(original_image_full_path)[1]
+
+    # split in an array in case image name has several dots
+    image_name_split_array = original_image_full_name.split('.')
+
+    # extension
+    original_image_extension = image_name_split_array[len(image_name_split_array) - 1]
+
+    # name
+    original_image_name = "_".join(image_name_split_array[0:len(image_name_split_array) - 1])
+
+    return original_image_path + original_image_name + suffix + '.' + original_image_extension
+
+
+def create_thumbnail(original_image_full_path, size, suffix):
+    """Creates a resized version of an image"""
+
+    # Get original image
+    original_image = Image.open(original_image_full_path)
+
+    # Create a copy
+    image_copy = original_image.copy()
+
+    # Resize
+    image_copy.thumbnail(size, Image.ANTIALIAS)
+
+    # Save
+    image_copy.save(get_thumbnail_path(original_image_full_path, suffix))
+
+    return
 
 
 class Owner(models.Model):
@@ -16,8 +54,8 @@ class Owner(models.Model):
         return super(self.__class__, self).delete(*args, **kwargs)
 
 
-class City(models.Model):
-    """Cities of Sports Centers"""
+class Location(models.Model):
+    """Locations of Sports Centers"""
     name = models.CharField(max_length=50)
     slug = models.CharField(max_length=50)
 
@@ -43,16 +81,16 @@ class SportsCenterManager(models.Manager):
     def search(self, filter_values):
         """Makes the main filtering"""
 
-        # City and sport are always present
-        city = City.objects.get(slug=filter_values['location'])
+        # Location and sport are always present
+        location = Location.objects.get(slug=filter_values['location'])
         sport = Sport.objects.get(slug=filter_values['sport'])
 
         # Get centers ids with the sport selected by the user
         sports_centers_sport_ids =\
             SportsCenterSport.objects.filter(sport_id=sport.id).values_list('center_id', flat=True)
 
-        # Get active sports centers by sport and city
-        sports_centers = self.filter(active=True, pk__in=sports_centers_sport_ids, city=city.id)
+        # Get active sports centers by sport and location
+        sports_centers = self.filter(active=True, pk__in=sports_centers_sport_ids, location=location.id)
 
         if 'date' in filter_values:
             # Check if the sports center is opened in that date
@@ -81,7 +119,7 @@ class SportsCenterManager(models.Manager):
 class SportsCenter(models.Model):
     """Sports centers"""
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     slug = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
@@ -121,6 +159,25 @@ class SportsCenter(models.Model):
 
     class Meta:
         ordering = ('-creation_date',)
+
+
+class SportsCenterMedia(models.Model):
+    """Media (images, videos) for sports centers"""
+    sports_center = models.ForeignKey(SportsCenter, on_delete=models.CASCADE)
+    url = models.ImageField(upload_to='sports_centers_images/', blank=True, null=True)
+    order = models.PositiveSmallIntegerField(blank=True, null=True)
+
+    def save(self):
+        """Overwrite save method to resize image"""
+        super(SportsCenterMedia, self).save()
+        if self.url:
+            create_thumbnail(self.url.path, (500, 258), '_thumb')
+
+    def thumb_url(self):
+        return get_thumbnail_path(self.url.url, '_thumb')
+
+    class Meta:
+        ordering = ('order',)
 
 
 class SportsCenterSport(models.Model):

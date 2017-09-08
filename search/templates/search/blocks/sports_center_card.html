@@ -2,7 +2,16 @@
 <div class="col s12 m12 l6 xl4">
     <div class="card" id="center-{{ sports_center.id }}" data-id="{{ sports_center.id }}">
         <div class="card-image">
-            <img src="{% static 'core/img/pista5.jpg' %}" />
+            {% if images %}
+                <div class="carousel carousel-slider">
+                    {% for image in images %}
+                        <a class="carousel-item" href="#one!"><img src="{{ image.thumb_url }}" /></a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <img class="no-images-center" src="{% static 'core/img/logo.gif' %}" alt="{{ sports_center.name }}">
+            {% endif %}
+
             <a class=" activator btn-floating halfway-fab waves-effect waves-light blue">
                 <i class="material-icons">add</i>
             </a>

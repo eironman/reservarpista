@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<div class="col s12 m6 l3">
+    <div class="card small">
+        <div class="card-image">
+            {% with 'core/img/deportes/'|add:card_image as image_url %}
+                <img src="{% static image_url %}" alt="{{ card_name }}"/>
+            {% endwith %}
+            <!--span class="card-title">{{ card_title }}</span-->
+        </div>
+        <div class="card-content">
+            <span class="card-title truncate">{{ card_title }}</span>
+        </div>
+        <div class="card-action center">
+            <a class="waves-effect waves-light btn modal-trigger blue"
+               href="{% url 'search:search_results' sport_slug=sport_slug location_slug=location_slug %}?time=00:00&duration=60">
+                BUSCAR
+            </a>
+        </div>
+    </div>
+</div>

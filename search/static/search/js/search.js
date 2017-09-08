@@ -1,8 +1,8 @@
 (function($){
     // Init page elements
     $(function(){
-        Paginator.init();
         SportsCenter.init();
+        Paginator.init();
         BookingModal.init();
         SearchResults.init();
     });

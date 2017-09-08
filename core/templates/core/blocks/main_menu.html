@@ -1,0 +1,47 @@
+<a href="#" data-activates="mobile-menu" class="button-collapse">
+    <i class="material-icons">menu</i>
+</a>
+
+<!-- Big resolutions menu -->
+<ul class="right hide-on-med-and-down">
+    <li>
+        <a href="{% url 'core:index' %}">Portada</a>
+    </li>
+    {% if user.is_authenticated %}
+        <li>
+            <a href="{% url 'management:management_panel' %}">Administración</a>
+        </li>
+        <li>
+            <a href="{% url 'authentication:logout' %}">Logout {{ user.username }}</a>
+        </li>
+    {% else %}
+        <li>
+            <a href="{% url 'signup:signup_page_owner' %}">Registro propietario</a>
+        </li>
+        <li>
+            <a href="{% url 'authentication:login' %}">Login</a>
+        </li>
+    {% endif %}
+</ul>
+
+<!-- Small resolutions menu -->
+<ul id="mobile-menu" class="side-nav">
+    <li>
+        <a href="{% url 'core:index' %}">Portada</a>
+    </li>
+    {% if user.is_authenticated %}
+        <li>
+            <a href="{% url 'management:management_panel' %}">Administración</a>
+        </li>
+        <li>
+            <a href="{% url 'authentication:logout' %}">Logout {{ user.username }}</a>
+        </li>
+    {% else %}
+        <li>
+            <a href="{% url 'signup:signup_page_owner' %}">Registro propietario</a>
+        </li>
+        <li>
+            <a href="{% url 'authentication:login' %}">Login</a>
+        </li>
+    {% endif %}
+</ul>

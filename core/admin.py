@@ -10,12 +10,19 @@ class SportsCenterSportInline(admin.TabularInline):
     model = SportsCenterSport
 
 
+class SportsCenterMediaInline(admin.TabularInline):
+    """Media inside sports center admin"""
+    extra = 3
+    model = SportsCenterMedia
+    fields = ('url', 'order')
+
+
 @admin.register(SportsCenter)
 class SportsCenterAdmin(admin.ModelAdmin):
     """Sports center"""
     description = forms.CharField(widget=forms.Textarea)
-    inlines = [SportsCenterSportInline]
-    list_display = ('name', 'active', 'city', 'has_email')
+    inlines = [SportsCenterMediaInline, SportsCenterSportInline]
+    list_display = ('name', 'active', 'location', 'has_email')
     search_fields = ('name',)
     # list_per_page = 50
 
@@ -27,7 +34,7 @@ class SportsCenterAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Owner)
-admin.site.register(City)
+admin.site.register(Location)
 admin.site.register(Sport)
 admin.site.register(Court)
 admin.site.register(Surface)

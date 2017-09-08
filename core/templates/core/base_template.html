@@ -39,55 +39,12 @@
         <header>
             <nav class="blue darken-1">
                 <div class="nav-wrapper container">
-                    <a href="{% url 'core:index' %}" class="brand-logo">Reservarpista</a>
-
-                    <a href="#" data-activates="mobile-menu" class="button-collapse">
-                        <i class="material-icons">menu</i>
-                    </a>
-
-                    <!-- Big resolutions menu -->
-                    <ul class="right hide-on-med-and-down">
-                        <li>
-                            <a href="{% url 'core:index' %}">Portada</a>
-                        </li>
-                        {% if user.is_authenticated %}
-                            <li>
-                                <a href="{% url 'management:management_panel' %}">Administración</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'authentication:logout' %}">Logout {{ user.username }}</a>
-                            </li>
-                        {% else %}
-                            <li>
-                                <a href="{% url 'signup:signup_page_owner' %}">Registro propietario</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'authentication:login' %}">Login</a>
-                            </li>
-                        {% endif %}
-                    </ul>
-
-                    <!-- Small resolutions menu -->
-                    <ul id="mobile-menu" class="side-nav">
-                        <li>
-                            <a href="{% url 'core:index' %}">Portada</a>
-                        </li>
-                        {% if user.is_authenticated %}
-                            <li>
-                                <a href="{% url 'management:management_panel' %}">Administración</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'authentication:logout' %}">Logout {{ user.username }}</a>
-                            </li>
-                        {% else %}
-                            <li>
-                                <a href="{% url 'signup:signup_page_owner' %}">Registro propietario</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'authentication:login' %}">Login</a>
-                            </li>
-                        {% endif %}
-                    </ul>
+                    <h1 class="center">
+                        <a href="{% url 'core:index' %}">
+                            <img src="{% static 'core/img/logo.gif' %}" width="40" height="40" alt="reservar pista"/>
+                            Reservar Pista
+                        </a>
+                    </h1>
                 </div>
             </nav>
         </header>
@@ -96,8 +53,8 @@
         </main>
         {% block footer %}
             <footer class="page-footer light-blue cyan-3">
-                <div class="container">
-                    Pie
+                <div class="container right-align">
+                    Para cualquier consulta, escribir a info@reservarpista.es
                 </div>
             </footer>
         {% endblock %}

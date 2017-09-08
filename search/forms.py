@@ -1,5 +1,5 @@
 from django import forms
-from core.models import City, Sport
+from core.models import Location, Sport
 
 
 TIME_CHOICES = (
@@ -54,7 +54,7 @@ def get_sports_choices():
 
 def get_locations_choices():
     """Options for location select"""
-    locations = City.objects.all()
+    locations = Location.objects.all()
     choices = []
     for location in locations:
         location_tuple = (location.slug, location.name)

@@ -41,20 +41,59 @@ main {
         font-size: 10px;
     }
 }
+/* Header */
+nav h1{
+    margin: 0;
+    padding-top: 15px;
+    font-size: 2.3rem;
+}
+nav h1 img{
+    margin-top: -5px;
+    vertical-align: middle;
+}
+@media (max-width: 601px) {
+    nav h1 {
+        padding-top: 19px;
+        font-size: 1.4rem;
+    }
+    nav h1 img {
+        width: 30px;
+        height: 30px;
+    }
+}
+/* homepage */
+.homepage .card.small .card-content{
+    padding: 12px 0px 0 10px;
+}
+.homepage .text-header {
+    padding-left: 10px;
+}
+
 /* sports center page */
 .card.highlighted {
     box-shadow: 0 0 3px 3px #1e88e5
 }
-#sports-center-display {
+.main-content-display {
     margin-top: 110px;
 }
 @media (max-width: 600px) {
     .search-form-container {
         top: 56px;
     }
-    #sports-center-display {
+    .main-content-display {
         margin-top: 160px;
     }
+}
+#sports_centers_cards .card .card-image,
+.carousel.carousel-slider {
+    height: 175px !important;
+}
+.card .card-image img.no-images-center {
+    width: 100px;
+    height: 100px;
+    top: 30px;
+    left: 50%;
+    margin-left: -50px;
 }
 .card-reveal .amenities strong {
     display: inline-block;
@@ -64,7 +103,7 @@ main {
     height: 300px;
     padding: 0 20px;
 }
-.no-results p{
+.no-results .card-panel{
     margin: 0 auto;
     text-align: center;
 }
@@ -150,6 +189,21 @@ main {
     flex: 1 0 auto;
 }
 /* helpers */
+.text-header {
+    font-weight: 300;
+    font-size: 2.50rem;
+}
+.justify {
+    text-align: justify;
+}
+@media (max-width: 601px) {
+    .text-header {
+        font-size: 2rem;
+    }
+}
+.mt50 {
+    margin-top: 50px !important;
+}
 .mb0,
 .search-form input {
     margin-bottom: 0px !important;
@@ -159,6 +213,12 @@ main {
 }
 .mb50 {
     margin-bottom: 50px !important;
+}
+.mb100 {
+    margin-bottom: 100px !important;
+}
+.pt20 {
+    padding-top: 20px !important;
 }
 .pl0 {
     padding-left: 0px !important;
