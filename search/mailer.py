@@ -45,8 +45,8 @@ class SearchMailer:
             'date': self.date,
             'time': self.time,
             'duration': self.duration,
-            'email': self.user_email,
-            'phone': self.user_phone,
+            'email': self.user_email if not self.user_email == '' else '-',
+            'phone': self.user_phone if not self.user_phone == '' else '-',
         }
         self.msg_plain = render_to_string('email/booking_request_center.txt', email_data)
         self.msg_html = render_to_string('email/booking_request_center.html', email_data)
@@ -99,6 +99,7 @@ class SearchMailer:
             # TODO Log exceptions
             return False
 
+        # TODO Store email
         if emails_sent == 1:
             return True
         else:

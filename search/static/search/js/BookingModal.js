@@ -166,8 +166,6 @@ var BookingModal =
         this.time = SearchForm.getTimeText();
         this.duration = SearchForm.getDurationText();
         this.fillUserRequestData();
-        // $('#booking-modal').modal('open');
-        // this.showForm();
     }
 }
 

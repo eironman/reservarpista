@@ -21,12 +21,19 @@
             <p>{{ sports_center.phone }}</p>
         </div>
         <div class="card-action center">
-            <a class="waves-effect waves-light btn modal-trigger blue"
-               href="#booking-modal"
-               data-id="{{ sports_center.id }}"
-               data-sports-center-name="{{ sports_center.name }}">
-                Solicitar Reserva
-            </a>
+            {% if sports_center.email == "" %}
+                <a class="waves-effect waves-light btn modal-trigger blue disabled"
+                   href="#">
+                    Solicitar Reserva
+                </a>
+            {% else %}
+                <a class="waves-effect waves-light btn modal-trigger blue"
+                   href="#booking-modal"
+                   data-id="{{ sports_center.id }}"
+                   data-sports-center-name="{{ sports_center.name }}">
+                    Solicitar Reserva
+                </a>
+            {% endif %}
         </div>
         <div class="card-reveal">
             <span class="card-title grey-text text-darken-4">
