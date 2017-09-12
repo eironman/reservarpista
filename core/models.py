@@ -129,6 +129,7 @@ class SportsCenter(models.Model):
     email = models.CharField(max_length=40, default=None, blank=True)
     website = models.CharField(max_length=200, default=None, blank=True)
     description = models.TextField(max_length=1000, default=None, blank=True)
+    private_info = models.TextField(max_length=1000, default=None, blank=True)
     municipal = models.BooleanField(default=False)
     locker_room = models.BooleanField(default=False)
     lockers = models.BooleanField(default=False)

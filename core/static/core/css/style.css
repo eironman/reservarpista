@@ -8,13 +8,6 @@ header {
 main {
     margin-top: 65px;
 }
-.search-form-container {
-    position: fixed;
-    width: 100%;
-    top: 64px;
-    z-index: 9;
-    background-color: #fff;
-}
 .material-icons {
     background-color: transparent !important;
 }
@@ -69,7 +62,14 @@ nav h1 img{
     padding-left: 10px;
 }
 
-/* sports center page */
+/* search page */
+.search-form-container {
+    position: fixed;
+    width: 100%;
+    top: 64px;
+    z-index: 9;
+    background-color: #fff;
+}
 .card.highlighted {
     box-shadow: 0 0 3px 3px #1e88e5
 }
@@ -94,6 +94,12 @@ nav h1 img{
     top: 30px;
     left: 50%;
     margin-left: -50px;
+}
+.carousel.carousel-slider .carousel-item {
+    min-height: auto;
+}
+.carousel .carousel-item>img {
+    height: 100%;
 }
 .card-reveal .amenities strong {
     display: inline-block;

@@ -12,7 +12,7 @@ from core.models import SportsCenter
 def get_sports_centers_page(sports_centers_list, page_num):
     """Returns the list of sports centers in a page"""
 
-    sports_centers_per_page = 3
+    sports_centers_per_page = 15
     paginator = Paginator(sports_centers_list, sports_centers_per_page)
     try:
         sports_centers = paginator.page(page_num)
