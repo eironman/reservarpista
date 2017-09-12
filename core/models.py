@@ -92,6 +92,7 @@ class SportsCenterManager(models.Manager):
         # Get active sports centers by sport and location
         sports_centers = self.filter(active=True, pk__in=sports_centers_sport_ids, location=location.id)
 
+        # TODO Filter sports centers by time and duration even if there is no date
         if 'date' in filter_values:
             # Check if the sports center is opened in that date
             date_object = datetime.strptime(filter_values['date'], '%Y/%m/%d')
@@ -106,10 +107,14 @@ class SportsCenterManager(models.Manager):
                 dt = datetime.combine(
                     date.today(), time(int(time_list[0]), int(time_list[1]))
                 ) + timedelta(minutes=int(filter_values['duration']))
+                finishing_time = dt.strftime('%H:%M:%S')
+                # TODO Contemplate the case where a user wants to play past the midnight
+                if finishing_time == "00:00:00" or finishing_time == "00:30:00":
+                    finishing_time = "23:59:00"
 
                 time_filter = {
                     'opening_time_' + weekday_name + '__lte': filter_values['time'],
-                    'closing_time_' + weekday_name + '__gte': dt.time(),
+                    'closing_time_' + weekday_name + '__gte': finishing_time,
                 }
                 sports_centers = sports_centers.filter(**time_filter)
 
