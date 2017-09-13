@@ -51,14 +51,6 @@
                     {% endif %}
                 </li>
                 <li>
-                    <strong>Municipal</strong>
-                    {% if sports_center.municipal %}
-                        <i class="material-icons tiny green">check</i>
-                    {% else %}
-                        <i class="material-icons tiny red">clear</i>
-                    {% endif %}
-                </li>
-                <li>
                     <strong>Vestuarios</strong>
                     {% if sports_center.locker_room %}
                         <i class="material-icons tiny green">check</i>
@@ -69,14 +61,6 @@
                 <li>
                     <strong>Taquillas</strong>
                     {% if sports_center.lockers %}
-                        <i class="material-icons tiny green">check</i>
-                    {% else %}
-                        <i class="material-icons tiny red">clear</i>
-                    {% endif %}
-                </li>
-                <li>
-                    <strong>Equipamiento</strong>
-                    {% if sports_center.equipment_rental %}
                         <i class="material-icons tiny green">check</i>
                     {% else %}
                         <i class="material-icons tiny red">clear</i>
@@ -101,6 +85,14 @@
                 <li>
                     <strong>Parking</strong>
                     {% if sports_center.parking %}
+                        <i class="material-icons tiny green">check</i>
+                    {% else %}
+                        <i class="material-icons tiny red">clear</i>
+                    {% endif %}
+                </li>
+                <li>
+                    <strong>Equipamiento</strong>
+                    {% if sports_center.equipment_rental %}
                         <i class="material-icons tiny green">check</i>
                     {% else %}
                         <i class="material-icons tiny red">clear</i>

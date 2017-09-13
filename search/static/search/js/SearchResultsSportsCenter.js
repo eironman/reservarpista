@@ -1,4 +1,4 @@
-var SportsCenter =
+var SearchResultsSportsCenter =
 {
     center: null,
 
@@ -109,10 +109,10 @@ var SportsCenter =
 
         // Hover events
         $('#sports_centers_cards').on('mouseover', '.card', function() {
-            Map.highlightMarker($(this).data('id'));
+            SearchResultsMap.highlightMarker($(this).data('id'));
         });
         $('#sports_centers_cards').on('mouseleave', '.card', function() {
-            Map.unhighlightActiveMarker();
+            SearchResultsMap.unhighlightActiveMarker();
         });
     }
 };

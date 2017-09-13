@@ -11,7 +11,7 @@ var Paginator =
         .done(function(response) {
             if (response['result'] == 'ok') {
                 $('#sports_centers_cards').html(response.html_list);
-                SportsCenter.initializeCarousel();
+                SearchResultsSportsCenter.initializeCarousel();
                 $('#sports_centers_paginator').html(response.html_paginator);
                 $('body').scrollTop(0);
             } else {

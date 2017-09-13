@@ -4,20 +4,20 @@
 {% block pagetitle %} - Reserva tu deporte online{% endblock %}
 
 {% block head %}
-    <script type='text/javascript' src="{% static 'search/js/Map.js' %}"></script>
+    <script type='text/javascript' src="{% static 'search/js/SearchResultsMap.js' %}"></script>
     <script type='text/javascript' src="{% static 'search/js/Paginator.js' %}"></script>
-    <script type='text/javascript' src="{% static 'search/js/SportsCenter.js' %}"></script>
+    <script type='text/javascript' src="{% static 'search/js/SearchResultsSportsCenter.js' %}"></script>
     <script type='text/javascript' src="{% static 'search/js/BookingModal.js' %}"></script>
     <script type='text/javascript' src="{% static 'search/js/SearchResults.js' %}"></script>
     <script type='text/javascript' src="{% static 'search/js/search.js' %}"></script>
 
     <!-- Google captcha -->
     <script src="https://www.google.com/recaptcha/api.js?hl=es" async defer></script>
-    
+
     <!-- Google maps -->
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa4i1mAjRQclf1VLyPWxEMD5XCItn0WLk&callback=Map.init"
-        type="text/javascript"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa4i1mAjRQclf1VLyPWxEMD5XCItn0WLk&callback=SearchResultsMap.init">
+    </script>
 {% endblock %}
 
 {% block primary %}

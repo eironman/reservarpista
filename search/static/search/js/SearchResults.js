@@ -5,8 +5,8 @@ var SearchResults =
     showSportsCentersMap: function()
     {
         if (this.mq.matches) {
-            Map.showMap();
-            SportsCenter.hideList();
+            SearchResultsMap.showMap();
+            SearchResultsSportsCenter.hideList();
             $("#show-result-map").addClass("hide");
             $("#show-result-centers").removeClass("hide");
         }
@@ -15,8 +15,8 @@ var SearchResults =
     showSportsCentersList: function()
     {
         if (this.mq.matches) {
-            Map.hideMap();
-            SportsCenter.showList();
+            SearchResultsMap.hideMap();
+            SearchResultsSportsCenter.showList();
             $("#show-result-map").removeClass("hide");
             $("#show-result-centers").addClass("hide");
         }

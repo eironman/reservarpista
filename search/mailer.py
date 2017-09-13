@@ -52,7 +52,7 @@ class SearchMailer:
         self.msg_html = render_to_string('email/booking_request_center.html', email_data)
         self.subject = 'Solicitud de Reserva'
 
-        emails_sent = True
+        all_emails_sent = True
 
         # Email to sports center
         if settings.DEBUG:
@@ -60,12 +60,12 @@ class SearchMailer:
         else:
             self.email_to = self.sports_center.email
         if not self.__send_email():
-            emails_sent = False
+            all_emails_sent = False
 
         # Email to reservar pista
         self.email_to = settings.DEFAULT_FROM_EMAIL
         if not self.__send_email():
-            emails_sent = False
+            all_emails_sent = False
 
         # Email to user
         if not self.user_email == '':
@@ -73,9 +73,9 @@ class SearchMailer:
             self.msg_html = render_to_string('email/booking_request_user.html', email_data)
             self.email_to = self.user_email
             if not self.__send_email():
-                emails_sent = False
+                all_emails_sent = False
 
-        return emails_sent
+        return all_emails_sent
 
     def __send_email(self):
         """Sends the actual email"""

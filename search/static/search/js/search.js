@@ -1,7 +1,7 @@
 (function($){
     // Init page elements
     $(function(){
-        SportsCenter.init();
+        SearchResultsSportsCenter.init();
         Paginator.init();
         BookingModal.init();
         SearchResults.init();
@@ -13,8 +13,6 @@ function GCaptchaCallback()
 {
     BookingModal.sendBookingRequest();
 }
-
-
 
 
 

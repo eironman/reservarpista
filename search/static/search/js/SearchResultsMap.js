@@ -1,4 +1,4 @@
-var Map =
+var SearchResultsMap =
 {
     map: null,
     markersList: [],
@@ -11,7 +11,7 @@ var Map =
     // Shows in the results the sports center selected
     displayCenter: function(sportsCenterId)
     {
-        SportsCenter.find(sportsCenterId);
+        SearchResultsSportsCenter.find(sportsCenterId);
     },
 
     // Hides the map (for mobile)
@@ -56,7 +56,7 @@ var Map =
                 '<h6>' + self.sportsCenterslocations[i]['name'] + '</h6>' +
                 '<p>' + self.sportsCenterslocations[i]['phone'] + '</p>' +
                 '<p>' +
-                '<a href="#" onclick="Map.displayCenter(' + self.sportsCenterslocations[i]['id'] + '); return false;">' +
+                '<a href="#" onclick="SearchResultsMap.displayCenter(' + self.sportsCenterslocations[i]['id'] + '); return false;">' +
                 'Ver Ficha' +
                 '</a>' +
                 '</p>';
@@ -104,7 +104,7 @@ var Map =
         var containerWidth = $('#map-column').width();
         var containerHeight = $(window).height();
         var headerHeight = $('header').outerHeight();
-        var searchFormHeight = $('.search-form-container').outerHeight();;
+        var searchFormHeight = $('.search-form-container').outerHeight();
         this.sportsCenterslocations = $('#map').data('locations');
 
         // Set map container width
