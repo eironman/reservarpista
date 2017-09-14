@@ -1,2 +1,3 @@
 # reservarpista
-Plataforma para reservar online pistas deportivas
+Platform to book sports online
+Developed with Django, using virtual enviroments and pip
