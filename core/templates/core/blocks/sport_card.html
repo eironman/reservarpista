@@ -3,9 +3,8 @@
     <div class="card small">
         <div class="card-image">
             {% with 'core/img/deportes/'|add:card_image as image_url %}
-                <img src="{% static image_url %}" alt="{{ card_name }}"/>
+                <img src="{% static image_url %}" alt="{{ card_title }} {{ location_slug }}"/>
             {% endwith %}
-            <!--span class="card-title">{{ card_title }}</span-->
         </div>
         <div class="card-content">
             <span class="card-title truncate">{{ card_title }}</span>

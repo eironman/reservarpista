@@ -2,9 +2,10 @@
 {% load staticfiles %}
 <html lang="es-ES">
     <head>
-        <title>Reservarpista {%block pagetitle %}{% endblock %}</title>
-        <meta name="description" content="Reservar pádel, tenis, futbol, ... online" />
-        <meta name="keywords" content="reservar padel tenis fútbol" />
+        <title>{% block pagetitle %}{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="{% block description %}{% endblock %}" />
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

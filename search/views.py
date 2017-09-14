@@ -54,6 +54,8 @@ def index(request, sport_slug, location_slug):
 
     context = {
         'form': form,
+        'sport': sport_slug,
+        'location': location_slug,
         'sports_centers': sports_centers,
         'sports_centers_locations': json.dumps(sports_centers_locations)
     }

@@ -1,7 +1,8 @@
 {% extends 'core/base_template.html' %}
 {% load staticfiles %}
 
-{% block pagetitle %} - Reserva tu deporte online{% endblock %}
+{% block pagetitle %}{{ sport }} en {{ location }} | Reservar pista{% endblock %}
+{% block description %}Resultados de búsqueda para {{ sport }} en {{ location }}{% endblock %}
 
 {% block head %}
     <script type='text/javascript' src="{% static 'search/js/SearchResultsMap.js' %}"></script>

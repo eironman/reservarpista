@@ -5,7 +5,7 @@
             {% if images %}
                 <div class="carousel carousel-slider">
                     {% for image in images %}
-                        <a class="carousel-item" href="#one!"><img src="{{ image.thumb_url }}" /></a>
+                        <a class="carousel-item" href="#one!"><img src="{{ image.thumb_url }}" alt="{{ sports_center.name }}"/></a>
                     {% endfor %}
                 </div>
             {% else %}

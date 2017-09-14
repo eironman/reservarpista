@@ -135,6 +135,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+# Absolute filesystem path to the directory that will hold all the static files. Production server will serve these
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATIC_URL = '/static/'
 
 # Absolute filesystem path to the directory that will hold user uploaded files.

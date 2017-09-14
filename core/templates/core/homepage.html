@@ -1,7 +1,8 @@
 {% extends 'core/base_template.html' %}
 {% load staticfiles %}
 
-{% block pagetitle %} - Reserva tu deporte online{% endblock %}
+{% block pagetitle %}Reserva pádel, fútbol, tenis y baloncesto | Reservar pista{% endblock %}
+{% block description %}Solicita una reserva online para pádel, fútbol, tenis o baloncesto en Mallorca o Madrid{% endblock %}
 
 {% block primary %}
 
@@ -15,17 +16,17 @@
     </p>
     <div class="row">
         <h2 class="text-header blue-text text-darken-1">Reservar pista en Mallorca</h2>
-        {% include 'core/blocks/sport_card.html' with card_image="padel2.jpg" card_title="Pádel" sport_slug="padel" location_slug="mallorca" %}
-        {% include 'core/blocks/sport_card.html' with card_image="futbol6.jpg" card_title="Fútbol 7" sport_slug="futbol-7" location_slug="mallorca" %}
-        {% include 'core/blocks/sport_card.html' with card_image="tenis2.jpg" card_title="Tenis" sport_slug="tenis" location_slug="mallorca" %}
-        {% include 'core/blocks/sport_card.html' with card_image="baloncesto1.jpg" card_title="Baloncesto" sport_slug="baloncesto" location_slug="mallorca" %}
+        {% include 'core/blocks/sport_card.html' with card_image="padel-mallorca.jpg" card_title="Pádel" sport_slug="padel" location_slug="mallorca" %}
+        {% include 'core/blocks/sport_card.html' with card_image="futbol-mallorca.jpg" card_title="Fútbol 7" sport_slug="futbol-7" location_slug="mallorca" %}
+        {% include 'core/blocks/sport_card.html' with card_image="tenis-mallorca.jpg" card_title="Tenis" sport_slug="tenis" location_slug="mallorca" %}
+        {% include 'core/blocks/sport_card.html' with card_image="baloncesto-mallorca.jpg" card_title="Baloncesto" sport_slug="baloncesto" location_slug="mallorca" %}
     </div>
     <div class="row pt20 mb100">
         <h2 class="text-header blue-text text-darken-1">Reservar pista en Madrid</h2>
-        {% include 'core/blocks/sport_card.html' with card_image="padel1.jpg" card_title="Pádel" sport_slug="padel" location_slug="madrid" %}
-        {% include 'core/blocks/sport_card.html' with card_image="futbol5.jpg" card_title="Fútbol 7" sport_slug="futbol-7" location_slug="madrid" %}
-        {% include 'core/blocks/sport_card.html' with card_image="tenis3.jpg" card_title="Tenis" sport_slug="tenis" location_slug="madrid" %}
-        {% include 'core/blocks/sport_card.html' with card_image="baloncesto2.jpg" card_title="Baloncesto" sport_slug="baloncesto" location_slug="madrid" %}
+        {% include 'core/blocks/sport_card.html' with card_image="padel-madrid.jpg" card_title="Pádel" sport_slug="padel" location_slug="madrid" %}
+        {% include 'core/blocks/sport_card.html' with card_image="futbol-madrid.jpg" card_title="Fútbol 7" sport_slug="futbol-7" location_slug="madrid" %}
+        {% include 'core/blocks/sport_card.html' with card_image="tenis-madrid.jpg" card_title="Tenis" sport_slug="tenis" location_slug="madrid" %}
+        {% include 'core/blocks/sport_card.html' with card_image="baloncesto-madrid.jpg" card_title="Baloncesto" sport_slug="baloncesto" location_slug="madrid" %}
     </div>
 </div>
 
