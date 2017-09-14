@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'anymail',
     'core.apps.CoreConfig',
     'management.apps.ManagementConfig',
     'search.apps.SearchConfig',
@@ -78,7 +77,7 @@ TEMPLATES = [
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
+        'LOCATION': '-',
     }
 }
 
@@ -90,12 +89,12 @@ WSGI_APPLICATION = 'reservarpista.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': '-',
         'NAME': '-',
         'USER': '-',
         'PASSWORD': '-',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'HOST': '-',
+        'PORT': '-',
     }
 }
 
@@ -138,12 +137,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-ANYMAIL = {
-    "MAILGUN_API_KEY": "-",
-    "MAILGUN_SENDER_DOMAIN": "-",
-}
-EMAIL_BACKEND = "anymail.backends.mailgun.MailgunBackend"
-DEFAULT_FROM_EMAIL = "info@reservarpista.com"
+# Absolute filesystem path to the directory that will hold user uploaded files.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Relative path that handles the media served from MEDIA_ROOT
+MEDIA_URL = '/media/'
+
+# EMAIL configuration
+DEFAULT_FROM_EMAIL = '-'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = '-'
+EMAIL_HOST_USER = '-'
+EMAIL_HOST_PASSWORD = '-'
+EMAIL_USE_TLS = True
 
 # Google invisible reCAPTCHA
 RECAPTCHA_PUBLIC_KEY = '-'
