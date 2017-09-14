@@ -70,6 +70,23 @@ nav h1 img{
     z-index: 9;
     background-color: #fff;
 }
+.search-form-container ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #000;
+}
+.search-form-container :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #000;
+   opacity:  1;
+}
+.search-form-container ::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #000;
+   opacity:  1;
+}
+.search-form-container :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #000;
+}
+.search-form-container ::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #000;
+}
 .card.highlighted {
     box-shadow: 0 0 3px 3px #1e88e5
 }
@@ -137,7 +154,7 @@ nav h1 img{
 #map-container {
     position: fixed;
     z-index: 1;
-    /* height, width and top are set in initMap() */
+    /* width, height, and top are set in initMap() */
 }
 #map {
     width: 100%;
