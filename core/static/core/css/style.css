@@ -88,6 +88,12 @@ nav h1 img{
 .carousel.carousel-slider {
     height: 175px !important;
 }
+@media (min-width: 1500px) {
+    #sports_centers_cards .card .card-image,
+    .carousel.carousel-slider {
+        height: 250px !important;
+    }
+}
 .card .card-image img.no-images-center {
     width: 100px;
     height: 100px;
