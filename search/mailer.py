@@ -94,13 +94,13 @@ class SearchMailer:
             email.attach_alternative(self.msg_html, 'text/html')
 
         try:
-            emails_sent = email.send()
+            email_sent = email.send()
         except SMTPException as e:
             # TODO Log exceptions
             return False
 
         # TODO Store email
-        if emails_sent == 1:
+        if email_sent == 1:
             return True
         else:
             return False
