@@ -3,7 +3,9 @@
     <div class="card small">
         <div class="card-image">
             {% with 'core/img/deportes/'|add:card_image as image_url %}
-                <img src="{% static image_url %}" alt="{{ card_title }} {{ location_slug }}"/>
+                <a href="{% url 'search:search_results' sport_slug=sport_slug location_slug=location_slug %}">
+                    <img src="{% static image_url %}" alt="{{ card_title }} {{ location_slug }}"/>
+                </a>
             {% endwith %}
         </div>
         <div class="card-content">
