@@ -68,8 +68,8 @@ class SearchSportForm(forms.Form):
     """Search form"""
     location = forms.ChoiceField(label='Ubicación', choices=get_locations_choices())
     sport = forms.ChoiceField(label='Deporte', choices=get_sports_choices())
-    time = forms.ChoiceField(label='Hora', choices=TIME_CHOICES)
-    duration = forms.ChoiceField(label='Tiempo', choices=DURATION_CHOICES)
+    time = forms.ChoiceField(label='Hora', choices=TIME_CHOICES, required=False)
+    duration = forms.ChoiceField(label='Tiempo', choices=DURATION_CHOICES, required=False)
     date = forms.DateField(label='Día', input_formats=['%Y/%m/%d'], required=False)
 
     date.widget.attrs['class'] = 'datepicker'

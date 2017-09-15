@@ -109,7 +109,7 @@ class SportsCenterManager(models.Manager):
                 ) + timedelta(minutes=int(filter_values['duration']))
                 finishing_time = dt.strftime('%H:%M:%S')
                 # TODO Contemplate the case where a user wants to play past the midnight
-                if finishing_time == "00:00:00" or finishing_time == "00:30:00":
+                if finishing_time == "00:00:00" or finishing_time == "00:30:00" or finishing_time == "01:00:00":
                     finishing_time = "23:59:00"
 
                 time_filter = {
