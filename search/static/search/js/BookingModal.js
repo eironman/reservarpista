@@ -35,9 +35,10 @@ var BookingModal =
     {
         if ($("#user-name").val() == "") {
             this.showMandatoryNameError();
-        } else if ($("#contact-phone").val() == "" && $("#contact-email").val() == "") {
-            this.showMandatoryContactError();
+        } else if ($("#contact-email").val() == "") {
+            this.showMandatoryEmailError();
         } else {
+            this.hideErrors();
             grecaptcha.execute(); // The callback is GCaptchaCallback (search.js), which executes BookingModal.sendBookingRequest()
             // this.sendBookingRequest();
         }
@@ -48,7 +49,6 @@ var BookingModal =
     {
         var self = this;
         this.showLoading();
-        this.hideErrors();
 
         // Set the security token
         var csrftoken = Helper.getCookie('csrftoken')
@@ -117,8 +117,8 @@ var BookingModal =
         $('#booking-modal .errorlist .mandatory-name-field').removeClass('hide');
     },
 
-    // Message error when the user didn't fill the contact data
-    showMandatoryContactError: function()
+    // Message error when the user didn't fill the contact email
+    showMandatoryEmailError: function()
     {
         $('#booking-modal .errorlist .request-error').addClass('hide');
         $('#booking-modal .errorlist .mandatory-name-field').addClass('hide');
