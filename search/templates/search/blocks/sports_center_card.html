@@ -42,14 +42,6 @@
             <p>{{ sports_center.address }}</p>
             <ul class="amenities">
                 <li>
-                    <strong>Web</strong>
-                    {% if sports_center.website %}
-                        <a href="{{ sports_center.website }}" target="_blank" >Ver página</a>
-                    {% else %}
-                        <i class="material-icons tiny red">clear</i>
-                    {% endif %}
-                </li>
-                <li>
                     <strong>Vestuarios</strong>
                     {% if sports_center.locker_room %}
                         <i class="material-icons tiny green">check</i>
